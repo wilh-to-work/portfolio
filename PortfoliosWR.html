@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- CSS POUR LA PEAU DE MON SITE -->
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f0f0f0;
+            animation: fadeIn 1s ease-in;
         }
 
         header {
@@ -26,7 +30,7 @@
 
         nav ul li {
             display: inline;
-            margin-right: 1em;
+            margin: 0 1em;
         }
 
         nav ul li a {
@@ -34,8 +38,34 @@
             text-decoration: none;
         }
 
+        flex-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
         section {
             padding: 2em;
+        }
+
+        .project {
+            background-color: white;
+            padding: 1em;
+            margin: 1em 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         footer {
@@ -43,9 +73,6 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
         }
 
         form {
@@ -56,13 +83,13 @@
         }
 
         label {
-            margin-bottom: 0.5em;
+            margin: 1em 0 0.5em 0;
         }
 
         input,
         textarea {
             padding: 0.5em;
-            margin-bottom: 1em;
+            margin: 0.5em 0;
         }
 
         button {
@@ -70,26 +97,76 @@
             background-color: #333;
             color: white;
             border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 0.5em 0;
+            }
+
+            flex-box {
+                flex-direction: column;
+                height: auto;
+                padding: 2em 0;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            section {
+                padding: 1em;
+            }
+
+            .project {
+                margin: 1em 0;
+            }
+
+            form {
+                width: 100%;
+                padding: 1em;
+            }
         }
     </style>
 </head>
+
+<!-- skeulette de mon site -->
 <body>
+
+    <!-- NAV BAR -->
     <header>
         <h1>Portfolio wilhem reichert</h1>
         <nav>
             <ul>
                 <li><a href="#about">À propos</a></li>
-                <li><a href="#projects">Projets</a></li>
+                <li><a href="#projects pro">Projets pro</a></li>
+                <li><a href="#projects persso">Projects persso</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="about">
-        <h2>À propos de moi</h2>
-        <p>Je suis étudian en alternance BTS sio à Lyon</p>
-    </section>
-
+    <!-- BLOCK 1 -->
+    <flex-box>
+        <h1>
+            <p>Wilhem Reichert</p>
+            <p>Etudiant en alternance</p>
+            <p>BTS SIO</p>
+        </h1>
+    </flex-box>
     <section id="projects">
         <h2>Mes Projets</h2>
         <div class="project">
@@ -99,6 +176,14 @@
         <div class="project">
             <h3>Projet 2</h3>
             <p>Description du projet 2.</p>
+        </div>
+        <div class="project">
+            <h3>Projet 3</h3>
+            <p>Description du projet 3.</p>
+        </div>
+        <div class="project">
+            <h3>Projet 4</h3>
+            <p>Description du projet 4.</p>
         </div>
         <!-- Ajoutez plus de projets ici -->
     </section>
@@ -117,8 +202,8 @@
     </section>
 
     <footer>
-        <p>&copy; 2023 Mon Portfolio. Tous droits réservés.</p>
+        <p></p>
     </footer>
 </body>
 
-</html></form></section></div></section></html>
+</html>
