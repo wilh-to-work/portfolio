@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <!-- CSS POUR LA PEAU DE MON SITE -->
     <style>
         @import "tailwindcss";
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,6 +21,8 @@
         }
 
         header {
+            position: relative;
+            overflow: hidden;
             background-image: url('C:/Users/wilhe/Downloads/Internet Explorer/ROG_wallpaper_Showdown_3840x2160.jpg');
             background-size: cover;
             width: 100%;
@@ -26,6 +30,33 @@
             color: rgb(255, 0, 0);
             padding: 1em 0;
             text-align: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            background-size: 400% 400%;
+            animation: neonBackground 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes neonBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         nav ul {
@@ -50,7 +81,6 @@
             height: 100vh;
             background-color: #ffffff;
             color: rgb(255, 0, 0);
-            
             text-align: center;
         }
 
@@ -112,8 +142,13 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive Design */
@@ -150,6 +185,7 @@
 </head>
 
 <!-- skeulette de mon site -->
+
 <body>
 
     <!-- NAV BAR -->
@@ -163,56 +199,53 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <h2 class="text-3xl font-bold underline">
-            Hello world!
-        </h2>
-    </header>
+        < </header>
 
-    <!-- BLOCK 1 -->
-    <flex-box>
-        <h1>
-            <p>Wilhem Reichert</p>
-            <p>Etudiant en alternance</p>
-            <p>BTS SIO</p>
-        </h1>
-    </flex-box>
-    <section id="projects">
-        <h2>Mes Projets</h2>
-        <div class="project">
-            <h3>Projet 1</h3>
-            <p>Description du projet 1.</p>
-        </div>
-        <div class="project">
-            <h3>Projet 2</h3>
-            <p>Description du projet 2.</p>
-        </div>
-        <div class="project">
-            <h3>Projet 3</h3>
-            <p>Description du projet 3.</p>
-        </div>
-        <div class="project">
-            <h3>Projet 4</h3>
-            <p>Description du projet 4.</p>
-        </div>
-        <!-- Ajoutez plus de projets ici -->
-    </section>
+            <!-- BLOCK 1 -->
+            <flex-box>
+                <h1>
+                    <p>Wilhem Reichert</p>
+                    <p>Etudiant en alternance</p>
+                    <p>BTS SIO</p>
+                </h1>
+            </flex-box>
+            <section id="projects">
+                <h2>Mes Projets</h2>
+                <div class="project">
+                    <h3>Projet 1</h3>
+                    <p>Description du projet 1.</p>
+                </div>
+                <div class="project">
+                    <h3>Projet 2</h3>
+                    <p>Description du projet 2.</p>
+                </div>
+                <div class="project">
+                    <h3>Projet 3</h3>
+                    <p>Description du projet 3.</p>
+                </div>
+                <div class="project">
+                    <h3>Projet 4</h3>
+                    <p>Description du projet 4.</p>
+                </div>
+                <!-- Ajoutez plus de projets ici -->
+            </section>
 
-    <section id="contact">
-        <h2>Contactez-moi</h2>
-        <form action="submit_form.php" method="post">
-            <label for="name">Nom:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
-    </section>
+            <section id="contact">
+                <h2>Contactez-moi</h2>
+                <form action="submit_form.php" method="post">
+                    <label for="name">Nom:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </section>
 
-    <footer>
-        <p></p>
-    </footer>
+            <footer>
+                <p></p>
+            </footer>
 </body>
 
 </html>
