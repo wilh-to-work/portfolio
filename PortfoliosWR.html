@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="/src/styles.css" rel="stylesheet">
 
     <!-- CSS POUR LA PEAU DE MON SITE -->
     <style>
+        @import "tailwindcss";
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #ffffff;
             animation: fadeIn 1s ease-in;
         }
 
         header {
-            background-color: #333;
-            color: white;
+            background-image: url('C:/Users/wilhe/Downloads/Internet Explorer/ROG_wallpaper_Showdown_3840x2160.jpg');
+            background-size: cover;
+            width: 100%;
+            height: 400px;
+            color: rgb(255, 0, 0);
             padding: 1em 0;
             text-align: center;
         }
@@ -43,8 +48,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #333;
-            color: white;
+            background-color: #ffffff;
+            color: rgb(255, 0, 0);
+            
             text-align: center;
         }
 
@@ -57,7 +63,7 @@
         }
 
         .project {
-            background-color: white;
+            background-color: rgb(0, 204, 255);
             padding: 1em;
             margin: 1em 0;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -157,6 +163,9 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <h2 class="text-3xl font-bold underline">
+            Hello world!
+        </h2>
     </header>
 
     <!-- BLOCK 1 -->
