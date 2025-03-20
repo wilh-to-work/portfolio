@@ -3,249 +3,521 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="/src/styles.css" rel="stylesheet">
-
-    <!-- CSS POUR LA PEAU DE MON SITE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio de Votre Prénom NOM</title>
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
-        @import "tailwindcss";
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            animation: fadeIn 1s ease-in;
+        :root {
+            --blue: #4A90E2;
+            --orange: #F5A623;
+            --red: #D0021B;
+            --green: #7ED321;
+            --purple: #9013FE;
         }
 
-        header {
-            position: relative;
-            overflow: hidden;
-            background-image: url('C:/Users/wilhe/Downloads/Internet Explorer/ROG_wallpaper_Showdown_3840x2160.jpg');
-            background-size: cover;
+        /* Style général */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #141414;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
             width: 100%;
-            height: 400px;
-            color: rgb(255, 0, 0);
-            padding: 1em 0;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 7rem 2rem 2rem;
+            /* laisser de l'espace pour la navbar fixe */
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Banner */
+        #hero {
+            background: url('https://images.unsplash.com/photo-1522199710521-72d69614c702?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: green;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
-        header::before {
-            content: '';
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Bouton de téléchargement */
+        .download-btn {
+            background: var(--blue);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.5);
+        }
+        
+        /* CV display */
+        .cv-display {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding-top: 56.25%;
+            /* ratio 16:9 */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cv-display iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
-            background-size: 400% 400%;
-            animation: neonBackground 10s ease infinite;
-            z-index: -1;
-        }
-
-        @keyframes neonBackground {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 1em;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        flex-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffffff;
-            color: rgb(255, 0, 0);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-
-        section {
-            padding: 2em;
-        }
-
-        .project {
-            background-color: rgb(0, 204, 255);
-            padding: 1em;
-            margin: 1em 0;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        label {
-            margin: 1em 0 0.5em 0;
-        }
-
-        input,
-        textarea {
-            padding: 0.5em;
-            margin: 0.5em 0;
-        }
-
-        button {
-            padding: 0.5em;
-            background-color: #333;
-            color: white;
             border: none;
+        }
+
+        /* Compétences et Expériences */
+        .badges,
+        .cards,
+        .grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .badges {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            text-align: center;
+        }
+
+        .badge {
+            background: var(--green);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cards {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* Table de compétences */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #fff;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        /* Grille de projets/veille */
+        .grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .grid button {
+            background-size: cover;
+            background-position: center;
+            border: none;
+            border-radius: 8px;
+            height: 150px;
+            position: relative;
             cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
-        button:hover {
-            background-color: #555;
+        .grid button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
         }
 
-        /* Animations */
+        .grid button:hover {
+            transform: translateY(-5px);
+        }
+
+        .grid button:hover::before {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Formulaire de contact */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(50px);
             }
 
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            nav ul li {
-                display: block;
-                margin: 0.5em 0;
-            }
-
-            flex-box {
+            .nav-links {
+                display: none;
                 flex-direction: column;
-                height: auto;
-                padding: 2em 0;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            section {
-                padding: 1em;
-            }
-
-            .project {
-                margin: 1em 0;
-            }
-
-            form {
+                background: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                top: 60px;
                 width: 100%;
-                padding: 1em;
+                left: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: flex;
             }
         }
     </style>
 </head>
 
-<!-- skeulette de mon site -->
-
 <body>
 
-    <!-- NAV BAR -->
-    <header>
-        <h1>Portfolio wilhem reichert</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#projects pro">Projets pro</a></li>
-                <li><a href="#projects persso">Projects persso</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        < </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">MonPortfolio</div>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links">
+            <a href="#hero">Accueil</a>
+            <a href="#cv">CV</a>
+            <a href="#competences">Compétences</a>
+            <a href="#experiences">Expériences</a>
+            <a href="#formation">Formation</a>
+            <a href="#projets">Projets</a>
+            <a href="#veille">Veille</a>
+            <a href="#tableau">Tableau</a>
+            <a href="#avenir">Avenir</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-            <!-- BLOCK 1 -->
-            <flex-box>
-                <h1>
-                    <p>Wilhem Reichert</p>
-                    <p>Etudiant en alternance</p>
-                    <p>BTS SIO</p>
-                </h1>
-            </flex-box>
-            <section id="projects">
-                <h2>Mes Projets</h2>
-                <div class="project">
-                    <h3>Projet 1</h3>
-                    <p>Description du projet 1.</p>
-                </div>
-                <div class="project">
-                    <h3>Projet 2</h3>
-                    <p>Description du projet 2.</p>
-                </div>
-                <div class="project">
-                    <h3>Projet 3</h3>
-                    <p>Description du projet 3.</p>
-                </div>
-                <div class="project">
-                    <h3>Projet 4</h3>
-                    <p>Description du projet 4.</p>
-                </div>
-                <!-- Ajoutez plus de projets ici -->
-            </section>
+    <!-- Hero Banner -->
+    <section id="hero" class="section active animate__animated animate__fadeIn">
+        <h1>WILHEM REICHERT</h1>
+        <p>Comme le réseau j'aime être connecter ! 😊'</p>
+    </section>
 
-            <section id="contact">
-                <h2>Contactez-moi</h2>
-                <form action="submit_form.php" method="post">
-                    <label for="name">Nom:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Envoyer</button>
-                </form>
-            </section>
+    <!-- Section CV : Téléchargement et affichage -->
+    <section id="cv" class="section animate__animated animate__fadeIn">
+        <h2>Mon CV</h2>
+        <p>Téléchargez mon CV en PDF :</p>
+        <button>
+            <a href="#"><span>Button</span></a> 
+        </button>
+        <a href="\Users\wilhe\OneDrive\Bureau\Mes Programe\programation\site web portefolios\fichier por le portfolios\Wilhem Reichert (1).pdf" download class="download-btn animate__animated animate__pulse">Télécharger CV</a>
+        <div style="position: relative; width: 70%; height: 0; padding-top: 100.4286%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+            <iframe loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAGCCDVpjgI/GjumrakqlOf5xyx3flvC6g/view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+        </div>
+        <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGCCDVpjgI&#x2F;GjumrakqlOf5xyx3flvC6g&#x2F;view?utm_content=DAGCCDVpjgI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
+            target="_blank" rel="noopener">Wilhem Reichert</a> par Wilhem Reichert
+    </section>
+    
 
-            <footer>
-                <p></p>
-            </footer>
+    <!-- Section Compétences -->
+    <section id="competences" class="section animate__animated animate__fadeIn">
+        <h2>Compétences</h2>
+        <div class="badges">
+            <div class="badge">HTML5</div>
+            <div class="badge">CSS3</div>
+            <div class="badge">JavaScript</div>
+            <div class="badge">Hardware</div>
+            <div class="badge">Réseaux</div>
+            <div class="badge">Architecture Réseaux</div>
+            <div class="badge">Prompt Crafting</div>
+            <div class="badge">Software</div>
+            <!-- Ajoutez vos autres compétences -->
+        </div>
+    </section>
+
+    <!-- Section Expériences -->
+    <section id="experiences" class="section animate__animated animate__fadeIn">
+        <h2>Expériences Professionnelles</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Sun Valley system</h3>
+                <p>3 fois </p>
+                <p>Description de l’expérience professionnelle, missions et réalisations.</p>
+            </div>
+            <div class="card">
+                <h3>Poste / Stage 2</h3>
+                <p>Période : 2022 - 2023</p>
+                <p>Description de l’expérience professionnelle, missions et réalisations.</p>
+            </div>
+            <div class="card">
+                <h3>Poste / Stage 2</h3>
+                <p>Période : 2022 - 2023</p>
+                <p>Description de l’expérience professionnelle, missions et réalisations.</p>
+            </div>
+            <div class="card">
+                <h3>Poste / Stage 2</h3>
+                <p>Période : 2022 - 2023</p>
+                <p>Description de l’expérience professionnelle, missions et réalisations.</p>
+            </div>
+            <!-- Ajoutez d'autres cartes d'expérience -->
+        </div>
+    </section>
+
+    <!-- Section Formation -->
+    <section id="formation" class="section animate__animated animate__fadeIn">
+        <h2>Formation</h2>
+        <div class="card">
+            <h3>BTS Services Informatiques aux Organisations</h3>
+            <p>Nom de l'école, Ville</p>
+            <p>Description du parcours, projets réalisés durant la formation.</p>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projets" class="section animate__animated animate__fadeIn">
+        <h2>Projets</h2>
+        <div class="grid">
+            <button class="animate__animated animate__zoomIn"
+                style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');"
+                onclick="window.location.href='projet1.html'">Projet 1</button>
+            <button class="animate__animated animate__zoomIn"
+                style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6');"
+                onclick="window.location.href='projet2.html'">Projet 2</button>
+            <!-- Ajoutez d'autres projets -->
+        </div>
+    </section>
+
+    <!-- Section Veille -->
+    <section id="veille" class="section animate__animated animate__fadeIn">
+        <h2>Veille Technologique</h2>
+        <div class="grid">
+            <button class="animate__animated animate__zoomIn"
+                style="background-image: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd');"
+                onclick="window.location.href='veille1.html'">Veille 1</button>
+            <button class="animate__animated animate__zoomIn"
+                style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');"
+                onclick="window.location.href='veille2.html'">Veille 2</button>
+            <!-- Ajoutez d'autres veilles -->
+        </div>
+    </section>
+
+    <!-- Section Tableau de Compétences -->
+    <section id="tableau" class="section animate__animated animate__fadeIn">
+        <h2>Tableau de Compétences</h2>
+        <p>Consultez mon tableau détaillé des compétences :</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Compétence</th>
+                    <th>Niveau</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML/CSS</td>
+                    <td>Expert</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Avancé</td>
+                </tr>
+                <tr>
+                    <td>PHP/MySQL</td>
+                    <td>Intermédiaire</td>
+                </tr>
+                <!-- Ajoutez d'autres lignes -->
+            </tbody>
+        </table>
+        <!-- Vous pouvez ajouter un lien pour télécharger ce tableau si besoin -->
+        <a href="tableau_competences.pdf" download class="download-btn">Télécharger le tableau</a>
+    </section>
+
+    <!-- Section Avenir -->
+    <section id="avenir" class="section animate__animated animate__fadeIn">
+        <h2>Avenir</h2>
+        <p>Après mon BTS, je souhaite intégrer une entreprise innovante en tant que développeur web. Mes ambitions à
+            long terme incluent la création de solutions digitales innovantes et le développement de projets personnels
+            ambitieux.</p>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="section animate__animated animate__fadeIn">
+        <h2>Contact</h2>
+        <form class="contact-form" action="sendmail.php" method="post">
+            <!-- Pour que l'envoi d'un email soit fonctionnel, un traitement côté serveur (PHP, Node.js, etc.) ou un service tiers (ex : EmailJS) est nécessaire -->
+            <input type="text" name="nom" placeholder="Nom *" required>
+            <input type="email" name="email" placeholder="Email *" required>
+            <input type="text" name="sujet" placeholder="Sujet">
+            <textarea name="message" placeholder="Votre message *" rows="5" required></textarea>
+            <button type="submit" class="download-btn">Envoyer</button>
+        </form>
+    </section>
+
+    <!-- Script JS pour le menu burger et navigation fluide -->
+    <script>
+        // Toggle du menu burger sur mobile
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navigation par ancres avec animation de transition
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Masquer toutes les sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                // Afficher la section ciblée
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.classList.add('active');
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+                // Pour fermer le menu en mobile
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
